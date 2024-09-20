@@ -5,12 +5,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"> -->
+	<meta name="description" content="Cari tawu sisi tersembunyi anda dengan si jenius dr. Amba, J.Mk.">
+	<meta name="author" content="scwarzcopv">
+	<meta name="keywords" content="sistem pakar, amba, ambatron, jmk, jmk-48, prediksi">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="src/img/icons/icon-48x48.png" />
+	<link rel="shortcut icon" href="src/img/custom_avatars/logo.jpg" />
 
 	<title>Sistem Pakar dr.Amba, J.Mk.</title>
 
@@ -42,6 +42,7 @@
 -->
 
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
+	<audio src="src/sfx/fail.mp3" id="sfx_fail" class="d-none"></audio>
 	<main class="row d-flex align-items-center justify-content-center h-100 w-100 mx-auto">
 		<div class="">
 			<div class="row">
@@ -399,13 +400,16 @@
 								$('#loading_title').html('Menghubungi dr. Amba...');
 								$('#loading_progress').attr('aria-valuenow', '10').css('width', 10 + '%').html('10%');
 							}, 3300);
-						}, 90);
+						}, 0);
 						setTimeout(() => {
 							$(this).slideDown(500, 'easeInOutQuart', function() {
 							})
-						}, 3350)
+							func_radarChart(data);
+							if ((max_data.maxArr).length > 2) {
+								$("#sfx_fail")[0].play();
+							}
+						}, 3300)
 					})
-					func_radarChart(data);
 				})
 			});
 		}
@@ -421,6 +425,8 @@
 				$('#judol').slideDown(500, 'easeOutQuart');
 				$('#form_input').slideDown(500, 'easeOutQuart');
 				$(this).html('Lanjut Part ' + lanjut_part);
+				$("#sfx_fail")[0].pause();
+				$("#sfx_fail")[0].currentTime = 0;
 				lanjut_part++;
 			});
 		}
