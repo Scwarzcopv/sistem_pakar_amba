@@ -1,0 +1,18 @@
+.vscode
+
+src/img/avatars
+src/img/flags
+src/img/icons
+src/img/photos
+src/js/modules/settings
+src/js/settings.js
+# src/scss
+
+static/css/dark.css
+static/img
+static/js/settings.js
+static/js/settings.js.map
+static/*.html
+static/*.json
+
+*.md

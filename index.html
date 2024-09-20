@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+	<meta name="author" content="AdminKit">
+	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"> -->
+
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="src/img/icons/icon-48x48.png" />
+
+	<title>Sistem Pakar dr.Amba, J.Mk.</title>
+
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+	<!-- BEGIN SETTINGS -->
+	<link class="js-stylesheet" href="static/css/light.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.css" integrity="sha512-Z0kTB03S7BU+JFU0nw9mjSBcRnZm2Bvm0tzOX9/OuOuz01XQfOpa0w/N9u6Jf2f1OAdegdIPWZ9nIZZ+keEvBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<!--  -->
+	<style>
+		body {
+			opacity: 0;
+			/* height: 100vh; */
+		}
+		.box-44 {
+			box-shadow: rgba(59,125,221,255) 0px 2px 1px, rgba(59,125,221,255) 2px 0px 0px 0px,rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+		}
+	</style>
+	<!-- END SETTINGS -->
+</head>
+<!--
+  HOW TO USE: 
+  data-theme: default (default), dark, light, colored
+  data-layout: fluid (default), boxed
+  data-sidebar-position: left (default), right
+  data-sidebar-layout: default (default), compact
+-->
+
+<body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
+	<main class="row d-flex align-items-center justify-content-center h-100 w-100 mx-auto">
+		<div class="">
+			<div class="row">
+				<div class="col-sm-12 col-md-8 col-lg-6 mx-auto d-table">
+					<div class="d-table-cell align-middle">
+
+						<div class="text-center mt-4" id="judol">
+							<h1 class="h2 fw-bold">Apelikasi</h1>
+							<p class="lead">
+								Cari tawu sisi tersembunyi anda <br>dengan si jenius <span class="fw-bold">dr. Amba, J.Mk.</span>
+							</p>
+						</div>
+
+						<div class="card box-44" id="form_input">
+							<div class="card-body">
+								<div class="m-sm-4">
+									<div class="text-center mb-3">
+										<img src="src/img/custom_avatars/amba.jpeg" alt="Charles Hall" class="img-fluid rounded-circle border border-success border-3" width="132" height="132" />
+										<div class="mt-2 lead fw-bold">dr. Amba, J.Mk.</div>
+									</div>
+									<form>
+										<div class="mb-3">
+											<label class="form-label user-select-none">Nama <span class="text-danger">*</span></label>
+											<input class="form-control form-control-lg" type="text" name="form_nama" id="nama" placeholder="Nama anda" maxlength="30" autocomplete="off"/>
+										</div>
+										<div class="mb-3">
+											<label class="form-label user-select-none">Tanggal lair  <span class="text-danger">*</span></label>
+											<input type="text" class="form-control" name="form_tgl_lahir" id="tgl_lahir" placeholder="Pilih tanggal lair" />
+										</div>
+										<div class="mb-3">
+											<label class="form-label user-select-none">Warna sempak paporit  <span class="text-danger">*</span></label>
+											<select class="form-control warna_sempak" name="form_warna_sempak" id="warna_sempak">
+												<option value="">== Pilih Warna Sempak ==</option>
+												<!-- <optgroup label="Pilih warna sempak paporit anda"> -->
+												<!-- </optgroup> -->
+											</select>
+										</div>
+										<div class="text-center mt-3">
+											<div class="text-sm text-start user-select-none">Ket: <span class="text-danger">*</span> gk ngisi jomok</div>
+											<button class="btn btn-lg btn-primary disabled" type="button" name="submit" id="submit">Konsultasi</button>
+											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<div class="d-none" id="loading">
+							<div class="card-header">
+								<h5 class="card-title text-center" id="loading_title">Menghubungi dr. Amba...</h5>
+							</div>
+							<div class="progress mb-3">
+								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" id="loading_progress">10%</div>
+							</div>
+						</div>
+
+						<div class="card box-44 mt-4 d-none" id="hasil">
+							<div class="card-body">
+								<div class="m-sm-4">
+									<!-- <div class="text-center mb-3">
+										<img src="src/img/avatars/amba.jpeg" alt="Charles Hall" class="img-fluid rounded-circle border border-success border-3" width="132" height="132" />
+										<div class="mt-2 lead fw-bold">dr. Amba, J.Mk.</div>
+									</div> -->
+									<h5 class="card-title text-center mb-3">Berikut merupakan hasil dari penemuan sisi tersembunyi anda menurut dr. Amba</h5>
+									<h6 class="card-subtitle text-muted" id="data_input"></h6>
+									<div class="chart">
+										<canvas id="radar_amba"></canvas>
+									</div>
+									<h5 class="card-title text-center mb-3 mt-0 pt-0"><strong class="text-danger text-capitalize" id="hasil_nama"></strong><span id="hasil_tertinggi"></span></h5>
+									<div class="row justify-content-center">
+										<div class="col-7 col-md-5">
+											<img src="" alt="jmk.jpg" class="img-thumbnail border-0 p-0 shadow-none" id="gambar_jmk">
+										</div>
+									</div>
+									<div class="text-center mt-3">
+										<button class="btn btn-lg btn-primary" type="button" name="btn_back" id="btn_back">Lanjut Part 2</button>
+										<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script src="static/js/app.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+	<script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js" integrity="sha512-xq+0+dRhI6SZOh+lDnMJEju2p2YPINflJLcYrRAsIMaXnJi6/V3lppCMCYsB2MLeF2E93r+fVo0MioY90pNzpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.compatibility.js" integrity="sha512-+ol0Tck+iZU3Wj7lJSB9/7iVlEwvVbURRJTUQ9QmjVFF8tnrltnwuafT/eu1e4GTOgbCri6YLJkvUS8YIr4U2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<!-- Chart js -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+	<!-- Custom -->
+	<script src="static/js/customapp.js"></script>
+
+	<script>
+		// $(document).ready(function () {
+			// Choices.js
+			const choices = new Choices(".warna_sempak", {
+				// placeholderValue: 'Pilih warna sempak paporit',
+  				shouldSort: false,
+				removeItemButton: true,
+				searchFields: ['label'],
+				choices: [
+					{ value: 1, label: 'Putih' },
+					{ value: 2, label: 'Hytam' },
+					{ value: 3, label: 'Kuning' },
+					{ value: 4, label: 'Merah' },
+					{ value: 5, label: 'Ungu' },
+					{ value: 6, label: 'Hijau' },
+					{ value: 7, label: 'Biru' },
+					{ value: 8, label: 'Soklat' },
+					{ value: 9, label: 'Abu-abu' },
+					{ value: 10, label: 'Biru tua' },
+					{ value: 11, label: 'Merah muda' },
+					{ value: 12, label: 'Merah tua' },
+					{ value: 13, label: 'Putih muda' },
+					{ value: 'RESING', label: 'Hytam tua' },
+					{ value: 'RESING2', label: 'Hytam tua bangka' },
+					{ value: 16, label: 'Transparan' },
+					{ value: 'JOMOK', label: 'Pelangi 🏳‍🌈' },
+					{ value: 'mantap', label: '[Painted] Premium Skin Limitit Edison 🔥' },
+					{ value: 'mantap2', label: '[Painted] Premium Pertalite' },
+					{ value: 'mantap3', label: '[Painted] Special Sempak Guci' },
+					{ value: 'mantap4', label: '[Painted] Special sempak Gusion' },
+					{ value: 'PEDO', label: '[Painted] Special Sempak Nana' },
+					{ value: 'PUNG', label: 'Apa itu sempak 💀' },
+				],
+			})
+			// Flatpickr
+			const tglLahir = $('#tgl_lahir').flatpickr({
+				dateFormat: "D, d-m-Y", 
+				"locale": "id",
+				maxDate: "today"
+			});
+		// });
+	</script>
+	
+	<script>
+		var newRadar;
+		var labels = ["Pengocog Handal", "Pedo", "Jomok", "Wibu", "Resing", "Caboel"];
+		function func_radarChart(data) {
+			if (newRadar != null) newRadar.destroy();
+			newRadar = new Chart($("#radar_amba"), {
+				type: "radar",
+				data: {
+					labels: labels,
+					datasets: [{
+						label: "",
+						backgroundColor: "rgba(220, 53, 69, 0.2)",
+						borderColor: window.theme.danger,
+						pointBackgroundColor: window.theme.danger,
+						pointBorderColor: "#fff",
+						pointHoverBackgroundColor: "#fff",
+						pointHoverBorderColor: window.theme.danger,
+						data: data,
+					}]
+				},
+				plugins: [ChartDataLabels],
+				options: {
+					maintainAspectRatio: false,
+					interaction: {
+						intersect: false
+					},
+					// maintainAspectRatio: false,
+					scales: {
+						r: {
+							suggestedMin: 0,
+							suggestedMax: 100, 
+							max: 100,
+							stepSize: 25, 
+							pointLabels: {
+								display: true, // Hides the labels around the radar chart 
+								font: {
+									size: 14,
+									weight: 'bolder',
+									lineHeight: 3,
+								}
+							},
+							ticks: {
+								display: false, // Hides the labels in the middel (numbers)
+								maxTicksLimit: 12,
+							},
+							label: {
+								display: false
+							}
+						},
+					},
+					plugins: {
+						legend: {
+							display: false
+						}
+					},
+				},
+				// options: options,
+			});
+		}
+
+		function func_hasilArr() {
+			var cekAnggotaJmk;
+			var splitNama;
+
+			// splitNama = $('#nama').val().trim().replace(/\s+/g, ' ').toLowerCase().split(" ");
+			// for (i = 0; i < splitNama.length; i++) {
+			// 	if (anggota_jmk.indexOf(splitNama[i]) > -1) {
+			// 		cekAnggotaJmk = true;
+			// 	}
+			// }
+			// splitNama = $('#nama').val().replace(/\s/g, '');
+			// if (anggota_jmk.indexOf(splitNama) > -1) {
+			// 	cekAnggotaJmk = true;
+			// }
+			// if (anggota_jmk.filter(item => item.toLowerCase().indexOf(splitNama) > -1)) {
+			// 	cekAnggotaJmk = true;
+			// }
+
+			splitNama = $('#nama').val().trim().replace(/\s/g, '').toLowerCase();
+			if (func_findArr(splitNama, pengecualian)) {
+				cekAnggotaJmk = 0;
+			}  
+			if (func_findArr(splitNama, anggota_jmk)) {
+				cekAnggotaJmk = 1;
+			}
+
+			if (cekAnggotaJmk == 0) {
+				arr_hasil = [] 
+			} else if (cekAnggotaJmk == 1) { 
+				arr_hasil = [100, 100, 100, 100, 100, 100] 
+			} else {
+				var i_nama = parseInt(func_toCharCode($('#nama').val()));
+				var i_tglLahir = parseInt(func_toCharCode($('#tgl_lahir').val()));
+				var i_warnaSempak = parseInt($('#warna_sempak').val());
+
+				var kecil = i_nama;
+				var besar = i_tglLahir;
+				if (i_nama > i_tglLahir) {
+					var besar = i_nama;
+					var kecil = i_tglLahir;
+				}
+				var fase1 = (besar * kecil) * (besar + kecil);
+				var fase1 = fase1.toString().replace(/\D/g, '');
+
+				var arr_hasil = [];
+				var curr_hasil = fase1[1];
+				var combine = 2;
+				var combined = 1;
+				for (i = 2; i < fase1.length - 2; i++) {
+					if (combined < combine) {
+						curr_hasil += '' + fase1[i];
+						combined++;
+					} else {
+						arr_hasil.push(parseInt(curr_hasil));
+						curr_hasil = '' + fase1[i];
+						combined = 1;
+					}
+				}
+				arr_hasil = arr_hasil.slice(0, -((arr_hasil.length) - 6));
+			}
+
+			// ["Pengocog Handal", "Pedo", "Jomok", "Wibu", "Resing", "Caboel"],
+			var warna_sempak = $('#warna_sempak').val();
+			switch (warna_sempak) {
+				case 'RESING': arr_hasil[4] += 30; break;
+				case 'RESING2': arr_hasil[4] += 78; break;
+				case 'JOMOK': arr_hasil[2] += 81; break;
+				case 'PEDO': arr_hasil[1] += 93; break;
+				case 'PUNG': arr_hasil[5] += 66; arr_hasil[0] += 66; break;
+			}
+
+			return arr_hasil;
+		}
+
+		function func_cekValidasi() {
+			$('[name^="form"]').on('change input', function () {
+				var validasi = true;
+				$('[name^="form"]').each(function () {
+					var this_val = $(this).val().replace(/\s/g, '');
+					if (this_val == "" || this_val == null) {
+						validasi = false;
+					}
+					// console.log($(this).val())
+				});
+				if (validasi) {
+					$('#submit').removeClass('disabled');
+				} else {
+					$('#submit').addClass('disabled');
+				}
+			})
+		}
+
+		function func_validasi() {
+			$('#submit').click(function() {
+				var data = func_hasilArr();
+				var max_data = func_max(data);
+
+				$('#hasil_nama').html($('#nama').val());
+				$('#hasil_tertinggi').html(max_data.maxData);
+				$('#gambar_jmk').attr('src','src/img/poto/'+ func_getImg(max_data.maxArr));
+				// console.log(max_data.maxArr);
+
+				// $('#data_input').html(
+				// 	'<table>' +
+				// 		'<tr>'+
+				// 			'<td>Nama</td>'+
+				// 			'<td> : </td>'+
+				// 			'<td>' + capitalizeWords($('#nama').val()) +'</td>'+
+				// 		'</tr>'+
+				// 		'<tr>'+
+				// 			'<td>Tgl. Lahir</td>'+
+				// 			'<td> : </td>'+
+				// 			'<td>' + $('#tgl_lahir').val() +'</td>'+
+				// 		'</tr>'+
+				// 		'<tr>'+
+				// 			'<td>Warna Sempak Paporit</td>'+
+				// 			'<td> : </td>'+
+				// 			'<td>' + $('#warna_sempak option:selected').text() +'</td>'+
+				// 		'</tr>'+
+				// 	'</table>'
+				// );
+
+				$('#judol').slideUp(500, 'easeOutQuart')
+				$('#form_input').slideUp(500, 'easeOutQuart', function() {
+					$('#hasil').removeClass('d-none').slideUp(0,function() {
+						$('#loading').removeClass('d-none');
+						setTimeout(() => {
+							setTimeout(() => {
+								$('#loading_title').html('Mewawancarai dr. Amba...');
+							}, 1000);
+							setTimeout(() => {
+								$('#loading_progress').attr('aria-valuenow', '20').css('width', 20 + '%').html('20%');
+							}, 1750)
+							setTimeout(() => {
+								$('#loading_progress').attr('aria-valuenow', '35').css('width', 35 + '%').html('35%');
+							}, 2250)
+							setTimeout(() => {
+								$('#loading_progress').attr('aria-valuenow', '80').css('width', 80 + '%').html('80%');
+							}, 2750)
+							setTimeout(() => {
+								$('#loading_title').html('Sip mencatat...');
+								$('#loading_progress').attr('aria-valuenow', '84').css('width', 84 + '%').html('84%');
+							}, 2950)
+							setTimeout(() => {
+								$('#loading_progress').attr('aria-valuenow', '98').css('width', 98 + '%').html('98%');
+							}, 3000)
+							setTimeout(() => {
+								$('#loading').addClass('d-none');
+								$('#loading_title').html('Menghubungi dr. Amba...');
+								$('#loading_progress').attr('aria-valuenow', '10').css('width', 10 + '%').html('10%');
+							}, 3300);
+						}, 90);
+						setTimeout(() => {
+							$(this).slideDown(500, 'easeInOutQuart', function() {
+							})
+						}, 3350)
+					})
+					func_radarChart(data);
+				})
+			});
+		}
+
+		var lanjut_part = 3;
+		function func_back() {
+			$('#btn_back').click(function() {
+				$('#nama').val('');
+				tglLahir.clear();
+				choices.setChoiceByValue("");
+				$('#submit').addClass('disabled');
+				$('#hasil').addClass('d-none');
+				$('#judol').slideDown(500, 'easeOutQuart');
+				$('#form_input').slideDown(500, 'easeOutQuart');
+				$(this).html('Lanjut Part ' + lanjut_part);
+				lanjut_part++;
+			});
+		}
+
+		$(document).ready(function () {
+			func_alphabetsOnly("#nama");
+			func_cekValidasi();
+			func_validasi();
+			func_back();
+		});
+	</script>
+
+</body>
+
+</html>
