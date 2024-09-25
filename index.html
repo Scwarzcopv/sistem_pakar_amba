@@ -43,6 +43,7 @@
 
 <body data-theme="default" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
 	<audio src="src/sfx/fail.mp3" id="sfx_fail" class="d-none"></audio>
+	<audio src="src/sfx/yatta.mp3" id="sfx_yatta" class="d-none"></audio>
 	<main class="row d-flex align-items-center justify-content-center h-100 w-100 mx-auto">
 		<div class="">
 			<div class="row">
@@ -137,6 +138,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js" integrity="sha512-xq+0+dRhI6SZOh+lDnMJEju2p2YPINflJLcYrRAsIMaXnJi6/V3lppCMCYsB2MLeF2E93r+fVo0MioY90pNzpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.compatibility.js" integrity="sha512-+ol0Tck+iZU3Wj7lJSB9/7iVlEwvVbURRJTUQ9QmjVFF8tnrltnwuafT/eu1e4GTOgbCri6YLJkvUS8YIr4U2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<!-- MD5 -->
+	 <script src="src/jQuery-MD5/jquery.md5.js"></script>
 
 	<!-- Chart js -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js"></script> -->
@@ -280,30 +284,42 @@
 			} else if (cekAnggotaJmk == 1) { 
 				arr_hasil = [100, 100, 100, 100, 100, 100] 
 			} else {
-				var i_nama = parseInt(func_toCharCode($('#nama').val()));
-				var i_tglLahir = parseInt(func_toCharCode($('#tgl_lahir').val()));
-				var i_warnaSempak = parseInt($('#warna_sempak').val());
+				// ========= Algorithm =========
 
-				var kecil = i_nama;
-				var besar = i_tglLahir;
-				if (i_nama > i_tglLahir) {
-					var besar = i_nama;
-					var kecil = i_tglLahir;
-				}
-				var fase1 = (besar * kecil) * (besar + kecil);
-				var fase1 = fase1.toString().replace(/\D/g, '');
+				// var i_nama = parseInt(func_toCharCode($('#nama').val()));
+				// var i_tglLahir = parseInt(func_toCharCode($('#tgl_lahir').val()));
+
+				// var kecil = i_nama;
+				// var besar = i_tglLahir;
+				// if (i_nama > i_tglLahir) {
+				// 	var besar = i_nama;
+				// 	var kecil = i_tglLahir;
+				// }
+				// var text_amba = (besar * kecil) * (besar + kecil);
+				// text_amba = text_amba.toString().replace(/\D/g, '');
+
+				var i_nama = $('#nama').val();
+				var i_tglLahir = $('#tgl_lahir').val();
+
+				var text_amba = i_nama+i_tglLahir;
+				text_amba = text_amba.trim().replace(/\s+/g, ' ').toLowerCase();
+				text_amba = $.md5(text_amba);
+				text_amba = func_toCharCode(text_amba);
+
+
+				// ========= Algorithm to arr =========
 
 				var arr_hasil = [];
-				var curr_hasil = fase1[1];
+				var curr_hasil = text_amba[1];
 				var combine = 2;
 				var combined = 1;
-				for (i = 2; i < fase1.length - 2; i++) {
+				for (i = 3; i < text_amba.length - 2; i++) {
 					if (combined < combine) {
-						curr_hasil += '' + fase1[i];
+						curr_hasil += '' + text_amba[i];
 						combined++;
 					} else {
 						arr_hasil.push(parseInt(curr_hasil));
-						curr_hasil = '' + fase1[i];
+						curr_hasil = '' + text_amba[i];
 						combined = 1;
 					}
 				}
@@ -407,6 +423,8 @@
 							func_radarChart(data);
 							if ((max_data.maxArr).length > 2) {
 								$("#sfx_fail")[0].play();
+							} else if ((max_data.maxArr).length == 0) {
+								$("#sfx_yatta")[0].play();
 							}
 						}, 3300)
 					})
@@ -427,6 +445,8 @@
 				$(this).html('Lanjut Part ' + lanjut_part);
 				$("#sfx_fail")[0].pause();
 				$("#sfx_fail")[0].currentTime = 0;
+				$("#sfx_yatta")[0].pause();
+				$("#sfx_yatta")[0].currentTime = 0;
 				lanjut_part++;
 			});
 		}

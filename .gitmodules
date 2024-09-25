@@ -1,0 +1,3 @@
+[submodule "src/jQuery-MD5"]
+	path = src/jQuery-MD5
+	url = https://github.com/placemarker/jQuery-MD5.git
